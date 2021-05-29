@@ -67,13 +67,19 @@ function saveTofs(){
     
     // file object in recordedData
     let videoUrl = URL.createObjectURL(recordedData );
-    
+    let iv = setInterval(function() {
+        if(db){
+            saveMedia("Video", videoUrl);
+            clearInterval(iv);
+        }
+        
+    }, 100);
 
-    let aTag = document.createElement("a");
-    aTag.download = "video.mp4";
-    aTag.href = videoUrl;
+    // let aTag = document.createElement("a");
+    // aTag.download = "video.mp4";
+    // aTag.href = videoUrl;
 
-    aTag.click(); 
+    // aTag.click(); 
     
 }
 function capturePhotos(){
@@ -100,10 +106,15 @@ function capturePhotos(){
 
     ctx.drawImage(videoPlayer, 0, 0);
     let imageUrl = canvas.toDataURL("image/jpg"); //canvas object => file url String
-  
-    let aTag = document.createElement("a");
-    aTag.download = "photo.jpg";
-    aTag.href = imageUrl;
-    aTag.click();
+    let iv = setInterval( function(){
+        if(db){
+          saveMedia("image" , imageUrl);
+          clearInterval(iv);
+        }
+      }  , 100 );
+    // let aTag = document.createElement("a");
+    // aTag.download = "photo.jpg";
+    // aTag.href = imageUrl;
+    // aTag.click();
 }
 
