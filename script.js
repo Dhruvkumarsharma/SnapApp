@@ -41,7 +41,7 @@ let zoomOut = document.querySelector("#out");
         }
         recordingState = !recordingState;
     })
-        console.log(mediaRecorder);
+        // console.log(mediaRecorder);
     photoCapture.addEventListener("click", capturePhotos);
 
     zoomIn.addEventListener("click", function(){
